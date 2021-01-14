@@ -5,7 +5,7 @@
 class Phrase {
   //constructor holds actual phrase object is representing
   constructor(phrase) {
-    this.phrase = phrase;
+    this.phrase = phrase.toLowerCase();
   }
 
   //Add letter placeholders to the display when the game starts
