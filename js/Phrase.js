@@ -5,12 +5,14 @@
 class Phrase {
   //constructor holds actual phrase object is representing
   constructor(phrase) {
-    this.phrase = phrase.toLowerCase();
+    this.phrase = phrase.phrase.toLowerCase();
   }
 
   //Add letter placeholders to the display when the game starts
   addPhraseToDisplay() {
-
+    // const game = new Game();
+    // const randomPhrase = game.getRandomPhrase();
+    // console.log(randomPhrase);
   }
 
   //Check to see if the letter selected by the player matches a letter in the phrase

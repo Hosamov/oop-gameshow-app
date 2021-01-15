@@ -9,7 +9,7 @@
 // const phrase = new Phrase("Life is like a box of chocolates");
 // console.log(`Phrase - phrase: ${phrase.phrase}`);
 
-////Test 3
+// //Test 3
 // const game = new Game();
 //
 // game.phrases.forEach((phrase, index) => {
@@ -17,14 +17,17 @@
 // });
 
 ////Test 3
-const logPhrase = (phrase) => {
-  console.log('Phrase - phrase: ', phrase.phrase);
-}
+// const logPhrase = (phrase) => {
+//   console.log('Phrase - phrase: ', phrase.phrase);
+// }
+//
+// const game = new Game();
+//
+// logPhrase(game.getRandomPhrase());
+// logPhrase(game.getRandomPhrase());
+// logPhrase(game.getRandomPhrase());
+// logPhrase(game.getRandomPhrase());
+// logPhrase(game.getRandomPhrase());
 
 const game = new Game();
-
-logPhrase(game.getRandomPhrase());
-logPhrase(game.getRandomPhrase());
-logPhrase(game.getRandomPhrase());
-logPhrase(game.getRandomPhrase());
-logPhrase(game.getRandomPhrase());
+const phrase = new Phrase(game.getRandomPhrase());

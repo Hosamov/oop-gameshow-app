@@ -5,29 +5,27 @@
  class Game {
    constructor() {
      this.missed = 0;
-     this.phrases = [
-       {
-         phrase: "I am your father"
-       },
-       {
-         phrase: "I made my family disappear"
-       },
-       {
-         phrase: "As you wish"
-       },
-       {
-         phrase: "I feel a need the need for speed"
-       },
-       {
-         phrase: "Beam me up Scotty"
-       },
-     ]; //['Phrase One', 'Phrase Two', 'Phrase Three', 'Phrase Four', 'Phrase Five'];
+      this.phrases = this.createPhrases(); //['Phrase One', 'Phrase Two', 'Phrase Three', 'Phrase Four', 'Phrase Five'];
      this.activePhrase = null;
    }
 
+   createPhrases() {
+     const phrase = [
+      {  phrase: "I am your father" },
+      {  phrase: "I made my family disappear" },
+      {  phrase: "As you wish" },
+      {  phrase: "I feel the need the need for speed" },
+      {  phrase: "Beam me up Scotty" },
+    ];
+    return phrase;
+   }
+
    getRandomPhrase() {
-     //Select and returna  random phrase stored in the 'phrase' property of Game class
-     return this.phrases[Math.floor(Math.random() * Math.floor(this.phrases.length))];
+     //Select and return a random phrase stored in the 'phrase' property of Game class
+     const randomPhraseIndex = Math.floor(Math.random() * this.phrases.length);
+     const randomPhrase =  this.phrases[randomPhraseIndex];
+     return randomPhrase;
+     //console.log(randomPhrase);
    }
 
  }
