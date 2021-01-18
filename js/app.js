@@ -24,7 +24,7 @@
 // const game = new Game();
 //
 // logPhrase(game.getRandomPhrase());
-// logPhrase(game.getRandomPhrase());
+// logPhrase(game.getRandomPhrase());``
 // logPhrase(game.getRandomPhrase());
 // logPhrase(game.getRandomPhrase());
 // logPhrase(game.getRandomPhrase());
@@ -37,6 +37,18 @@
 
 
 ////Test 5
-const game = new Game();
-game.startGame();
-console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
+// const game = new Game();
+// game.startGame();
+// console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
+
+
+
+//Global DOM variables
+const resetButton = document.getElementById('btn__reset'); //target btn__reset
+let game = ''; //declare (blank) variable for "new Game()"
+
+//Event listener for resetButton
+resetButton.addEventListener('click', (e) => {
+  game = new Game();  //create a new Game object
+  game.startGame();   //Start game by calling startGame() method in the Game class
+});

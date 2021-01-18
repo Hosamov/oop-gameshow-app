@@ -5,6 +5,8 @@
 //declare needed variables in the global scope:
 const overlay = document.querySelector('#overlay');
 
+
+
  class Game {
    constructor() {
      this.missed = 0;
@@ -52,4 +54,47 @@ const overlay = document.querySelector('#overlay');
       //4. Store the selected phrase to the game's activePhrase property
       this.activePhrase = newRandomPhrase;
     }
+
+   /**
+    * Check for winning move
+    * @return {boolean} True if game has been won, false if game wasn't won
+    */
+    checkForWin(){
+      const lettersShown = [];
+      for(let i = 0; i < ulChild.length; i++) {
+        if(!ulChild[i].classList.contains('hide')) { // && !ulChild[i].classList.contains('space')) {
+          lettersShown.push(ulChild[i]);
+          console.log(lettersShown.length);
+          console.log(lettersShown[i]);
+        }
+
+
+        // if(areHidden.length == 0) {
+        //   console.log('you won');
+        // } else {
+        //   console.log('still more to go...');
+        // }
+      }
+    };
+
+   /**
+    * Increases the value of the missed property
+    * Removes a life from the scoreboard
+    * Checks if player has remaining lives and ends game if player is out
+    */
+    removeLife() {
+
+    };
+
+   /**
+    * Displayer game over message
+    * @return {boolean} gameWon - Whether or not the user won the game
+    */
+    gameOver(gameWon) {
+
+    };
+
+    handleInteraction() {
+      checkLetter()
+    };
  }
