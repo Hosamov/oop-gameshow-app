@@ -5,8 +5,6 @@
 //declare needed variables in the global scope:
 const overlay = document.querySelector('#overlay');
 
-
-
  class Game {
    constructor() {
      this.missed = 0;
@@ -59,22 +57,22 @@ const overlay = document.querySelector('#overlay');
     * Check for winning move
     * @return {boolean} True if game has been won, false if game wasn't won
     */
-    checkForWin(){
-      const lettersShown = [];
+    checkForWin() {
+      const checkWin = [] //Array to hold li values with className of 'hide'
       for(let i = 0; i < ulChild.length; i++) {
-        if(!ulChild[i].classList.contains('hide')) { // && !ulChild[i].classList.contains('space')) {
-          lettersShown.push(ulChild[i]);
-          console.log(lettersShown.length);
-          console.log(lettersShown[i]);
+        if(ulChild[i].classList.contains('hide')) {  //check for list items with classList containing 'hide'
+          checkWin.push(ulChild[i].textContent);     //Add found list item(s) to the checkWin array
         }
-
-
-        // if(areHidden.length == 0) {
-        //   console.log('you won');
-        // } else {
-        //   console.log('still more to go...');
-        // }
       }
+
+      console.log(checkWin);
+      //Test checkWin to see if there are any items in the array
+      if(checkWin.length === 0) {
+        return true;  //if no items, return 'true'
+      } else {
+        return false; //otherwise, return 'false'
+      }
+      
     };
 
    /**

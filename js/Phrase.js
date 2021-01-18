@@ -23,9 +23,9 @@ class Phrase {
     for(let i = 0; i < this.phrase.length; i++) {
       const addLI = document.createElement('li');
       //console.log(this.phrase[i]);
-      ul.appendChild(addLI).classList.add('hide'); //add css class of 'hide' to all characters in the phrase
-      addLI.textContent = this.phrase[i];
       if(this.phrase[i] !== ' ') {
+        ul.appendChild(addLI).classList.add('hide'); //add css class of 'hide' to all characters in the phrase
+        addLI.textContent = this.phrase[i];
         ul.appendChild(addLI).classList.add('letter', this.phrase[i]); //add css class for 'letter' if it's a letter
       } else {
         ul.appendChild(addLI).classList.add('space'); //Add css class of 'space' if it's a space
