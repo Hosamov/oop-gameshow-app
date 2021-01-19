@@ -18,7 +18,7 @@
       {  phrase: "I am your father" },
       {  phrase: "I made my family disappear" },
       {  phrase: "As you wish" },
-      {  phrase: "Tale as old as time" },
+      {  phrase: "Go ahead make my day" },
       {  phrase: "Beam me up Scotty" },
     ];
     return phrase;
@@ -31,22 +31,20 @@
    getRandomPhrase() {
      //Select and return a random phrase stored in the 'phrase' property of Game class
      const randomPhraseIndex = Math.floor(Math.random() * this.phrases.length);
-     const randomPhrase =  this.phrases[randomPhraseIndex];
-     //return randomPhrase;
-     return new Phrase(randomPhrase.phrase);
-     //console.log(randomPhrase);
+     const randomPhrase =  this.phrases[randomPhraseIndex]; //pass a random phrase from 'phrase' array
+     return new Phrase(randomPhrase.phrase); //return a new instance of the Phrase class, passing in the random phrase
    }
 
    /**
     * Begin game by selecting a random phrase and displaying it to user
     */
     startGame() {
-      //Remove all 'li' elements from 'ul' element
+      //Remove all 'li' elements from the 'ul' element
       while (ul.firstChild) {
       ul.innerHTML = '';
       }
 
-      //Enable all of the onscreen keybaord buttons
+      //Enable/reenable all of the onscreen keyboard buttons
       button.forEach(button => {
         button.disabled = false;
         button.classList.remove('wrong', 'chosen');
@@ -91,7 +89,7 @@
       images[images.length - this.missed].src = 'images/lostHeart.png'; //replace furthest 'liveHeart' to the right with 'lostHeart'
 
       if(this.missed === 5) { //If the player has five missed guesses (out of lives)
-        this.gameOver(false); //end the game
+        this.gameOver(false); //false = game over
       }
     };
 
@@ -130,7 +128,7 @@
         this.activePhrase.showMatchedLetter(buttonContent); //Call showMatchedLetter()
 
         if(this.checkForWin()) {
-          this.gameOver(true);
+          this.gameOver(true); //true = win condition
         }
       }
     };

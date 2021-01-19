@@ -15,13 +15,14 @@ class Phrase {
     for(let i = 0; i < this.phrase.length; i++) {
       const addLI = document.createElement('li');
       const appendLI = ul.appendChild(addLI);
-      //console.log(this.phrase[i]);
-      if(this.phrase[i] !== ' ') {
+      let currentLetter = this.phrase[i];
+
+      if(currentLetter !== ' ') { //Make sure current letter is not a space before proceeding...
         appendLI.classList.add('hide'); //add css class of 'hide' to all characters in the phrase
-        addLI.textContent = this.phrase[i];
-        appendLI.classList.add('letter', this.phrase[i]); //add css class for 'letter' if it's a letter
+        addLI.textContent = currentLetter; //pass currentLetter in to current 'li' element
+        appendLI.classList.add('letter', currentLetter); //add css class for 'letter'
       } else {
-      appendLI.classList.add('space'); //Add css class of 'space' if it's a space
+      appendLI.classList.add('space'); //If the letter IS a space character, add the class of 'space' at its position
       }
     }
   };
@@ -45,10 +46,11 @@ class Phrase {
   showMatchedLetter(letter){
     // Select all of the letter DOM elements that have a CSS class name that matches the selected letter
     for (let i = 0; i < ulChild.length; i++) {
+      let currentChild = ulChild[i];
       //Replace each selected element's 'hide' CSS class with the 'show' CSS class
-      if(ulChild[i].classList.contains(letter)) {
-        ulChild[i].classList.remove('hide');
-        ulChild[i].classList.add('show');
+      if(currentChild.classList.contains(letter)) {
+        currentChild.classList.remove('hide');
+        currentChild.classList.add('show');
       }
     }
   };

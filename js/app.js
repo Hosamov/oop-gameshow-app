@@ -26,6 +26,7 @@ let game = ''; //declare (blank) variable for "new Game()"
 
 /*
  * Event Listener for resetButton
+ * start or reset the game  by clicking 'Start Game' button
  */
 resetButton.addEventListener('click', () => {
   game = new Game();  //create a new Game object
@@ -34,6 +35,7 @@ resetButton.addEventListener('click', () => {
 
 /*
  * Event Listener for onscreen keyboard buttons
+ * Select keyboard letters by clicking them on the screen
  */
 button.forEach(button => {
   button.addEventListener('click', () => {
