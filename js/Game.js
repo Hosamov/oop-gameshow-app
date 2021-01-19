@@ -4,6 +4,10 @@
 
 //declare needed variables in the global scope:
 const overlay = document.querySelector('#overlay');
+const tries = document.querySelectorAll('.tries');
+const images =document.querySelectorAll('img[src="images/liveHeart.png"]');
+
+let livesLost = 0; //track lives lost in removeLife() method
 
  class Game {
    constructor() {
@@ -72,7 +76,7 @@ const overlay = document.querySelector('#overlay');
       } else {
         return false; //otherwise, return 'false'
       }
-      
+
     };
 
    /**
@@ -81,6 +85,13 @@ const overlay = document.querySelector('#overlay');
     * Checks if player has remaining lives and ends game if player is out
     */
     removeLife() {
+      //1. Remove a life from the scoreboard (replace 'liveHeart.png' with 'lostHeart.png')
+        this.missed++; //increment the 'missed' property
+        images[images.length - this.missed].src = 'images/lostHeart.png'; //replace furthest 'liveHeart' to the right with 'lostHeart'
+
+      if(this.missed === 5) { //If the player has five missed guesses (out of lives)
+        this.gameOver(false); //end the game
+      }
 
     };
 
@@ -89,7 +100,7 @@ const overlay = document.querySelector('#overlay');
     * @return {boolean} gameWon - Whether or not the user won the game
     */
     gameOver(gameWon) {
-
+      console.log('you lost');
     };
 
     handleInteraction() {
