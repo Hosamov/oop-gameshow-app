@@ -1,14 +1,6 @@
 /* Treehouse FSJS Techdegree
  * Project 4 - OOP Game App
  * Phrase.js */
- const phraseSection = document.getElementById('phrase');
- const ul = document.querySelector('ul');
- const ulChild = ul.children;
- //const hideClass = document.querySelector('.hide');
- const hideClass = document.querySelectorAll('.hide'); //target all elements with a class of 'hide'
- const showClass = document.querySelectorAll('.show'); //target all elements with a class of 'show'
-
-
 
 class Phrase {
   //constructor holds actual phrase object is representing
@@ -38,10 +30,10 @@ class Phrase {
    * @param {string} letter - Letter to check
    */
   checkLetter(letter) {
-    for(let i = 0; i < ulChild.length; i++) { //Loop over li elements that are children of ul
-      if(ulChild[i].classList.contains(letter)) { //Check to see if the current index of classList for ulChild contains the selected letter
-        return letter;
-      }
+    if(game.activePhrase.phrase.includes(letter.toLowerCase())) { //convert letter to lowercase, check and see if it's included in game.activePhrase
+      return true;
+    } else {
+      return false;
     }
   };
 

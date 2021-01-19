@@ -1,54 +1,42 @@
 /* Treehouse FSJS Techdegree
  * Project 4 - OOP Game App
  * app.js */
-////Test 1
- // const phrase = new Phrase();
- // const game = new Game();
 
-////Test 2
-// const phrase = new Phrase("Life is like a box of chocolates");
-// console.log(`Phrase - phrase: ${phrase.phrase}`);
+//Global DOM variables used in Phrase class
+const phraseSection = document.getElementById('phrase');
+const ul = document.querySelector('ul');
+const ulChild = ul.children;
+const hideClass = document.querySelectorAll('.hide'); //target all elements with a class of 'hide'
+const showClass = document.querySelectorAll('.show'); //target all elements with a class of 'show'
 
-// //Test 3
-// const game = new Game();
-//
-// game.phrases.forEach((phrase, index) => {
-//   console.log(`Phrase ${index} - phrase: ${phrase.phrase}`);
-// });
+//Global variables used in Game class
+const overlay = document.querySelector('#overlay');
+const tries = document.querySelectorAll('.tries');
+const images =document.querySelectorAll('img[src="images/liveHeart.png"]');
+const gameOverMessage = document.getElementById('game-over-message');
+let livesLost = 0; //track lives lost in removeLife() method
 
-////Test 3
-// const logPhrase = (phrase) => {
-//   console.log('Phrase - phrase: ', phrase.phrase);
-// }
-//
-// const game = new Game();
-//
-// logPhrase(game.getRandomPhrase());
-// logPhrase(game.getRandomPhrase());``
-// logPhrase(game.getRandomPhrase());
-// logPhrase(game.getRandomPhrase());
-// logPhrase(game.getRandomPhrase());
-
-////Test 4
-//const game = new Game();
-// const randomPhrase = game.getRandomPhrase();
-// const phrase = new Phrase(randomPhrase.phrase);
-// phrase.addPhraseToDisplay();
-
-
-////Test 5
-// const game = new Game();
-// game.startGame();
-// console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
-
-
-
-//Global DOM variables
+//Global variables used in app.js
 const resetButton = document.getElementById('btn__reset'); //target btn__reset
+const button = document.querySelectorAll('.key');
 let game = ''; //declare (blank) variable for "new Game()"
 
+
 //Event listener for resetButton
-resetButton.addEventListener('click', (e) => {
+resetButton.addEventListener('click', () => {
   game = new Game();  //create a new Game object
   game.startGame();   //Start game by calling startGame() method in the Game class
 });
+
+//Event listener for letter button elements
+button.forEach(button => {
+  button.addEventListener('click', () => {
+    game.handleInteraction(button); //call handleInteraction(), passing 'button'
+  });
+
+});
+
+
+
+// const game = new Game();
+// game.getRandomPhrase().addPhraseToDisplay();

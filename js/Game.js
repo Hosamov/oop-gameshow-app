@@ -2,13 +2,6 @@
  * Project 4 - OOP Game App
  * Game.js */
 
-//declare needed variables in the global scope:
-const overlay = document.querySelector('#overlay');
-const tries = document.querySelectorAll('.tries');
-const images =document.querySelectorAll('img[src="images/liveHeart.png"]');
-
-let livesLost = 0; //track lives lost in removeLife() method
-
  class Game {
    constructor() {
      this.missed = 0;
@@ -39,7 +32,8 @@ let livesLost = 0; //track lives lost in removeLife() method
      //Select and return a random phrase stored in the 'phrase' property of Game class
      const randomPhraseIndex = Math.floor(Math.random() * this.phrases.length);
      const randomPhrase =  this.phrases[randomPhraseIndex];
-     return randomPhrase;
+     //return randomPhrase;
+     return new Phrase(randomPhrase.phrase);
      //console.log(randomPhrase);
    }
 
@@ -68,15 +62,12 @@ let livesLost = 0; //track lives lost in removeLife() method
           checkWin.push(ulChild[i].textContent);     //Add found list item(s) to the checkWin array
         }
       }
-
-      console.log(checkWin);
-      //Test checkWin to see if there are any items in the array
+      //parse checkWin to see if there are any values left within the array
       if(checkWin.length === 0) {
-        return true;  //if no items, return 'true'
+        return true;  //if no items in the array, return 'true'--you guessed the phrase
       } else {
         return false; //otherwise, return 'false'
       }
-
     };
 
    /**
@@ -85,25 +76,38 @@ let livesLost = 0; //track lives lost in removeLife() method
     * Checks if player has remaining lives and ends game if player is out
     */
     removeLife() {
-      //1. Remove a life from the scoreboard (replace 'liveHeart.png' with 'lostHeart.png')
-        this.missed++; //increment the 'missed' property
-        images[images.length - this.missed].src = 'images/lostHeart.png'; //replace furthest 'liveHeart' to the right with 'lostHeart'
+      this.missed++; //increment the 'missed' property
+      images[images.length - this.missed].src = 'images/lostHeart.png'; //replace furthest 'liveHeart' to the right with 'lostHeart'
 
       if(this.missed === 5) { //If the player has five missed guesses (out of lives)
         this.gameOver(false); //end the game
       }
-
     };
 
    /**
-    * Displayer game over message
+    * Displays game over message
     * @return {boolean} gameWon - Whether or not the user won the game
     */
     gameOver(gameWon) {
-      console.log('you lost');
+      overlay.style.display = 'flex'; //Display the original start screen overlay
+      if(!gameWon) { //if gameWon param is false...
+        gameOverMessage.textContent = "Sorry, better luck next time!"; //Add a friendly lose message to the screen
+        overlay.classList.remove('start', 'win'); //remove 'start' and/or 'win' class
+        overlay.classList.add('lose'); //add 'lose' class to overlay
+      } else {
+        gameOverMessage.textContent = 'Congratulations, you guessed the phrase!'; //Add a friendly win message to the screen
+        overlay.classList.remove('start', 'lose'); //remove 'start' and/or 'lose' class
+        overlay.classList.add('win'); //add 'win' class to overlay
+      }
+
+
     };
 
-    handleInteraction() {
-      checkLetter()
+    /**
+     * Handles onscreen keyboard button clicks
+     * @param (HTMLButtonElement) button - The clicked button element
+     */
+    handleInteraction(button) {
+      console.log(button);
     };
  }
