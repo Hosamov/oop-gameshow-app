@@ -5,7 +5,7 @@
 class Phrase {
   //constructor holds actual phrase object is representing
   constructor(phrase) {
-    this.phrase = phrase.toLowerCase();
+    this.phrase = phrase.toLowerCase(); //initialize 'phrase' property, set to lowerCase()
   }
 
   /**
@@ -14,13 +14,14 @@ class Phrase {
   addPhraseToDisplay() {
     for(let i = 0; i < this.phrase.length; i++) {
       const addLI = document.createElement('li');
+      const appendLI = ul.appendChild(addLI);
       //console.log(this.phrase[i]);
       if(this.phrase[i] !== ' ') {
-        ul.appendChild(addLI).classList.add('hide'); //add css class of 'hide' to all characters in the phrase
+        appendLI.classList.add('hide'); //add css class of 'hide' to all characters in the phrase
         addLI.textContent = this.phrase[i];
-        ul.appendChild(addLI).classList.add('letter', this.phrase[i]); //add css class for 'letter' if it's a letter
+        appendLI.classList.add('letter', this.phrase[i]); //add css class for 'letter' if it's a letter
       } else {
-        ul.appendChild(addLI).classList.add('space'); //Add css class of 'space' if it's a space
+      appendLI.classList.add('space'); //Add css class of 'space' if it's a space
       }
     }
   };

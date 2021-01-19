@@ -38,17 +38,28 @@
    }
 
    /**
-    * Begins game by selecting a random phrase and displaying it to user
+    * Begin game by selecting a random phrase and displaying it to user
     */
     startGame() {
-      //1. Hide start screen overlay (div with id of 'overlay')
-      overlay.style.display = 'none';
-      //2. Call the getRandomPhrase() method to select a Phrase object from the Game object's array of phrases
-      const newRandomPhrase = this.getRandomPhrase();
-      //3. Call addPhraseToDisplay() method to add the phrase to the gameboard
-      new Phrase(newRandomPhrase.phrase).addPhraseToDisplay();
-      //4. Store the selected phrase to the game's activePhrase property
-      this.activePhrase = newRandomPhrase;
+      //Remove all 'li' elements from 'ul' element
+      while (ul.firstChild) {
+      ul.innerHTML = '';
+      }
+
+      //Enable all of the onscreen keybaord buttons
+      button.forEach(button => {
+        button.disabled = false;
+        button.classList.remove('wrong', 'chosen');
+      });
+
+      //Set/reset all of the heart images in the scoreboard
+      images.forEach(image => image.src = 'images/liveHeart.png');
+
+      //Start a new instance of the game
+      overlay.style.display = 'none'; //Hide start screen overlay (div with id of 'overlay')
+      const newRandomPhrase = this.getRandomPhrase(); //Call the getRandomPhrase() method to select a Phrase object from the Game object's array of phrases
+      new Phrase(newRandomPhrase.phrase).addPhraseToDisplay(); //Call addPhraseToDisplay() method to add the phrase to the gameboard
+      this.activePhrase = newRandomPhrase; //Store the selected phrase to the game's activePhrase property
     }
 
    /**
@@ -100,7 +111,6 @@
         overlay.classList.add('win'); //add 'win' class to overlay
       }
 
-
     };
 
     /**
@@ -108,6 +118,23 @@
      * @param (HTMLButtonElement) button - The clicked button element
      */
     handleInteraction(button) {
-      console.log(button);
+      const buttonContent = button.textContent;
+      const checkPhrase = this.activePhrase.checkLetter(buttonContent);
+
+      button.disabled = true; //Disable selected letter's onscreen keyboard button
+      if(!this.activePhrase.phrase.includes(buttonContent)) {  //check if phrase does NOT include guessed letter
+        button.classList.add('wrong'); //add 'wrong' CSS class to selected letter's keyboard button
+        this.removeLife(); //call removeLife() method to remove a heart
+      } else {
+        button.classList.add('chosen'); //Add 'chosen' CSS class to selected letter's keyboard button
+        this.activePhrase.showMatchedLetter(buttonContent); //Call showMatchedLetter()
+
+        if(this.checkForWin()) {
+          this.gameOver(true);
+        }
+      }
     };
+
+
+
  }

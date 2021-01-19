@@ -2,6 +2,9 @@
  * Project 4 - OOP Game App
  * app.js */
 
+/*
+ * Global Variables
+ */
 //Global DOM variables used in Phrase class
 const phraseSection = document.getElementById('phrase');
 const ul = document.querySelector('ul');
@@ -21,22 +24,20 @@ const resetButton = document.getElementById('btn__reset'); //target btn__reset
 const button = document.querySelectorAll('.key');
 let game = ''; //declare (blank) variable for "new Game()"
 
-
-//Event listener for resetButton
+/*
+ * Event Listener for resetButton
+ */
 resetButton.addEventListener('click', () => {
   game = new Game();  //create a new Game object
   game.startGame();   //Start game by calling startGame() method in the Game class
 });
 
-//Event listener for letter button elements
+/*
+ * Event Listener for onscreen keyboard buttons
+ */
 button.forEach(button => {
   button.addEventListener('click', () => {
     game.handleInteraction(button); //call handleInteraction(), passing 'button'
   });
 
 });
-
-
-
-// const game = new Game();
-// game.getRandomPhrase().addPhraseToDisplay();
