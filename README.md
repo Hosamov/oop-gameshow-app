@@ -1,4 +1,4 @@
-### oop-gameshow-app
+## oop-gameshow-app
 A word-guessing game
 FSJS TD Project 4
 By: Matt Coale
@@ -8,7 +8,7 @@ An OOP (Object Oriented Programming) Gameshow App, created using Vanilla JavaScr
 Click a letter on the onscreen keyboard to guess the phrase that is randomly picked.
 Up to five (5) wrong guesses are allowed.
 
-##BASIC FEATURES
+### BASIC FEATURES
 1. Game class:
 - Constructor - 3x properties: missed, phrases, activePhrase
 - createPhrases() - holds an array of 5x phrase objects
@@ -25,7 +25,7 @@ Up to five (5) wrong guesses are allowed.
 - checkLetter(letter) - checks to see if the letter passed to the method is in the phrase
 - showMatchedLetter(letter) - If a match is found, this method shows the letter on screen
 
-##EXTRA/ADDED FEATURES
+### EXTRA/ADDED FEATURES
 1. Functionality:
 - Physical keyboard functionality: Press applicable 'letter' key instead of using the onscreen keyboard
 - Pressing the 'Enter' key while on the main, Game Over, or Winning screens is enabled to allow the user to start/restart the game without clicking 'Start Game' button
