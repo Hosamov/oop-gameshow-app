@@ -15,11 +15,11 @@
     */
    createPhrases() {
      const phrase = [
-      {  phrase: "I am your father" },
-      {  phrase: "I made my family disappear" },
-      {  phrase: "As you wish" },
-      {  phrase: "Go ahead make my day" },
-      {  phrase: "Beam me up Scotty" },
+      new Phrase("I am your father"),
+      new Phrase("I made my family disappear"),
+      new Phrase("As you wish"),
+      new Phrase("Go ahead make my day"),
+      new Phrase("Beam me up Scotty"),
     ];
     return phrase;
    }
@@ -32,7 +32,7 @@
      //Select and return a random phrase stored in the 'phrase' property of Game class
      const randomPhraseIndex = Math.floor(Math.random() * this.phrases.length);
      const randomPhrase =  this.phrases[randomPhraseIndex]; //pass a random phrase from 'phrase' array
-     return new Phrase(randomPhrase.phrase); //return a new instance of the Phrase class, passing in the random phrase
+     return randomPhrase;
    }
 
    /**
@@ -56,7 +56,7 @@
       //Start a new instance of the game
       overlay.style.display = 'none'; //Hide start screen overlay (div with id of 'overlay')
       const newRandomPhrase = this.getRandomPhrase(); //Call the getRandomPhrase() method to select a Phrase object from the Game object's array of phrases
-      new Phrase(newRandomPhrase.phrase).addPhraseToDisplay(); //Call addPhraseToDisplay() method to add the phrase to the gameboard
+      newRandomPhrase.addPhraseToDisplay(); //Call addPhraseToDisplay() method on newRandomPhrase to add the phrase to the gameboard
       this.activePhrase = newRandomPhrase; //Store the selected phrase to the game's activePhrase property
     }
 
