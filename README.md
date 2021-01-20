@@ -18,7 +18,6 @@ Up to five (5) wrong guesses are allowed.
 - removeLife() - removes a heart/'life' based on the game.missed property
 - gameOver(boolean) - returns true/false(win/lose) message, depending on gameOver state
 - handleInteraction(button) - controls most of the game logic
-
 2. Phrase class:
 - Constructor - 1x property: phrase
 - addPhraseToDisplay() - displays phrase on gameboard (gray blocks and white spaces)
@@ -29,5 +28,12 @@ Up to five (5) wrong guesses are allowed.
 1. Functionality:
 - Physical keyboard functionality: Press applicable 'letter' key instead of using the onscreen keyboard
 - Pressing the 'Enter' key while on the main, Game Over, or Winning screens is enabled to allow the user to start/restart the game without clicking 'Start Game' button
-2. App Styling
--
+2. App CSS Styling
+- Changed font from 'Montserrat' to 'Trebuchet MS'; added 3px letter spacing to help spread out the letters
+- Adjusted background color --color-win to #88b81b
+- Adjusted .win background-color from a preset value to --color-win (#88b81b)
+- Adjusted background color --color-lose to #9f132e
+- Adjusted start color --color-start to #1e0b49;
+- Adjusted .show background-color to #9cd31f
+- Adjusted .wrong background style to #dc1a40
+- Adjusted .chosen background style to #1e0b49
