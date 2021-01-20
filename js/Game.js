@@ -99,6 +99,7 @@
     */
     gameOver(gameWon) {
       overlay.style.display = 'flex'; //Display the original start screen overlay
+
       if(!gameWon) { //if gameWon param is false...
         gameOverMessage.textContent = "Sorry, better luck next time!"; //Add a friendly lose message to the screen
         overlay.classList.remove('start', 'win'); //remove 'start' and/or 'win' class
@@ -132,7 +133,5 @@
         }
       }
     };
-
-
 
  }
